@@ -9,6 +9,8 @@ export interface EditorSettings {
 	fontSize: number;
 	fontLigatures: boolean;
 	vimMode: boolean;
+	/** Add plugin items to the file context menu (Create Code File, Open in Code Editor). */
+	addContextMenu: boolean;
 }
 
 export const DEFAULT_SETTINGS: EditorSettings = {
@@ -21,6 +23,7 @@ export const DEFAULT_SETTINGS: EditorSettings = {
 	fontSize: 14,
 	fontLigatures: true,
 	vimMode: false,
+	addContextMenu: true,
 }
 
 const CODE_FILE_EXTENSIONS_SOURCE = [

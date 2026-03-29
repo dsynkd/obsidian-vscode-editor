@@ -1,4 +1,4 @@
-import { Plugin } from "obsidian";
+import { Plugin, TFile } from "obsidian";
 import * as monaco from "monaco-editor";
 import { CODE_FILE_EXTENSIONS, DEFAULT_SETTINGS, EditorSettings } from "./common";
 import { getMonacoBaseTheme } from "./ObsidianUtils";
@@ -59,6 +59,10 @@ export default class CodeFilesPlugin extends Plugin {
 
 		this.registerEvent(
 			this.app.workspace.on("file-menu", (menu, file) => {
+				if (!this.settings.addContextMenu) {
+					return;
+				}
+				menu.addSeparator()
 				menu.addItem((item) => {
 					item
 						.setTitle("Create Code File")
@@ -67,6 +71,21 @@ export default class CodeFilesPlugin extends Plugin {
 							new CreateCodeFileModal(this, file).open();
 						});
 				});
+				if (file instanceof TFile) {
+					menu.addItem((item) => {
+						item
+							.setTitle("Open in Code Editor")
+							.setIcon("code")
+							.onClick(async () => {
+								const leaf = this.app.workspace.getLeaf(true);
+								await leaf.setViewState({
+									type: viewType,
+									active: true,
+									state: { file: file.path },
+								});
+							});
+					});
+				}
 			})
 		);
 

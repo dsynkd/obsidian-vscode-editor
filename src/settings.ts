@@ -46,6 +46,18 @@ export class CodeFilesSettingsTab extends PluginSettingTab {
 				}));
 
 		new Setting(containerEl)
+			.setName("Add context menu")
+			.setDesc(
+				'When enabled, adds "Create Code File" and "Open in Code Editor" to the file menu.',
+			)
+			.addToggle(toggle => toggle
+				.setValue(this.plugin.settings.addContextMenu)
+				.onChange(async (value) => {
+					this.plugin.settings.addContextMenu = value;
+					await this.plugin.saveSettings();
+				}));
+
+		new Setting(containerEl)
 			.setName("Word wrap")
 			.setDesc("Editor will wrap long lines.")
 			.addToggle(toggle => toggle
