@@ -15,12 +15,12 @@ export function prepareMonacoHost(
 	contentEl.style.flexDirection = "column";
 	contentEl.style.height = "100%";
 	const host = document.createElement("div");
-	host.className = "vscode-editor-monaco-host";
+	host.className = "code-editor-monaco-host";
 	host.style.flex = "1";
 	host.style.minHeight = "0";
 	host.style.minWidth = "0";
 	const statusBar = document.createElement("div");
-	statusBar.className = "vscode-editor-vim-status";
+	statusBar.className = "code-editor-vim-status";
 	contentEl.appendChild(host);
 	contentEl.appendChild(statusBar);
 	return { host, statusBar };

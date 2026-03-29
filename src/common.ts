@@ -30,4 +30,4 @@ export const DEFAULT_SETTINGS: EditorSettings = {
 }
 
 
-export const viewType = "vscode-editor";
+export const viewType = "code-editor";

@@ -5,7 +5,7 @@ on:
     tags:
       - "*"
 env:
-  PLUGIN_NAME: obsidian-vscode-editor # Change this to the name of your plugin-id folder
+  PLUGIN_NAME: obsidian-code-editor # Change this to the name of your plugin-id folder
 
 jobs:
   build:
@@ -40,4 +40,4 @@ jobs:
           gh release create "$tag" \
             --title="$tag" \
             --draft \
-            main.js manifest.json styles.css obsidian-vscode-editor-"$tag".zip
+            main.js manifest.json styles.css obsidian-code-editor-"$tag".zip

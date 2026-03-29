@@ -4,7 +4,6 @@ import { CodeEditorView } from "./codeEditorView";
 import { CreateCodeFileModal } from "./createCodeFileModal";
 import { CodeFilesSettingsTab } from "./codeFilesSettingsTab";
 import { viewType } from "./common";
-import { t } from 'src/lang/helpers';
 import { FenceEditModal } from "./fenceEditModal";
 import { FenceEditContext } from "./fenceEditContext";
 import { mountCodeEditor } from "./mountCodeEditor";
@@ -43,9 +42,9 @@ export default class CodeFilesPlugin extends Plugin {
 		try {
 			this.registerExtensions(this.settings.extensions, viewType);
 		} catch (e) {
-			let exts = this.settings.extensions.join(", ")
-			new Notification(t("REGISTE_ERROR"), {
-				body: t("REGISTE_ERROR_DESC", e.message)
+			const message = e instanceof Error ? e.message : String(e);
+			new Notification("Code Editor plugin error", {
+				body: `${message}\nThere may already be other plugins registered with the same file extension. Please change the extension in the settings of the Code Editor plugin or disable conflicting plugins.`,
 			});
 		}
 
@@ -54,7 +53,7 @@ export default class CodeFilesPlugin extends Plugin {
 			this.app.workspace.on("file-menu", (menu, file) => {
 				menu.addItem((item) => {
 					item
-						.setTitle(t("CREATE_CODE"))
+						.setTitle("Create Code File")
 						.setIcon("file-json")
 						.onClick(async () => {
 							new CreateCodeFileModal(this, file).open();
@@ -63,7 +62,7 @@ export default class CodeFilesPlugin extends Plugin {
 			})
 		);
 
-		this.addRibbonIcon('file-json', t("CREATE_CODE"), () => {
+		this.addRibbonIcon("file-json", "Create Code File", () => {
 			new CreateCodeFileModal(this).open();
 		});
 
@@ -81,7 +80,7 @@ export default class CodeFilesPlugin extends Plugin {
 					return;
 				}
 				menu.addItem((item) => {
-					item.setTitle(t("EDIT_FENCE"))
+					item.setTitle("Edit code block in Code Editor")
 						.setIcon("code")
 						.onClick(() => {
 							FenceEditModal.openOnCurrentCode(this);

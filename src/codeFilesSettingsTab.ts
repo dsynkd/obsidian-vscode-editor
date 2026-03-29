@@ -1,11 +1,6 @@
 import { App, PluginSettingTab, Setting } from "obsidian";
 import CodeFilesPlugin from "./main";
-import { t } from 'src/lang/helpers';
-
-
-import {
-	THEME_COLOR
-} from "./constants";
+import { THEME_COLOR, THEME_COLOR_LABELS } from "./constants";
 
 export class CodeFilesSettingsTab extends PluginSettingTab {
 	plugin: CodeFilesPlugin;
@@ -20,16 +15,17 @@ export class CodeFilesSettingsTab extends PluginSettingTab {
 
 		containerEl.empty();
 
-		containerEl.createEl('h2', { text: t('CODE_SETTING') });
-
+		containerEl.createEl("h2", { text: "Code editor settings" });
 
 		new Setting(containerEl)
-			.setName(t("BASE_COLOR"))
-			.setDesc(t('BASE_COLOR_DESC'))
+			.setName("Base color")
+			.setDesc(
+				"Choose a base color for the code editor, the base color defaults to follow the base color of obsidian.",
+			)
 			.addDropdown(async (dropdown) => {
 				for (const key in THEME_COLOR) {
-					// @ts-ignore
-					dropdown.addOption(key, t(key));
+					const k = key as keyof typeof THEME_COLOR;
+					dropdown.addOption(k, THEME_COLOR_LABELS[k]);
 				}
 				dropdown.setValue(this.plugin.settings.themeColor);
 				dropdown.onChange(async (option) => {
@@ -40,8 +36,10 @@ export class CodeFilesSettingsTab extends PluginSettingTab {
 
 		let fontSizeText: HTMLDivElement;
 		new Setting(containerEl)
-			.setName(t('FONT_SIZE'))
-			.setDesc(t('FONT_SIZE_DESC'))
+			.setName("Font size")
+			.setDesc(
+				'Set the font size of the code editor.You can also use "ctrl + mouse wheel" to zoom in and out of the code editor.',
+			)
 			.addSlider(slider => slider
 				.setLimits(5, 30, 1)
 				.setValue(this.plugin.settings.fontSize)
@@ -58,8 +56,8 @@ export class CodeFilesSettingsTab extends PluginSettingTab {
 			});
 
 		new Setting(containerEl)
-			.setName(t('FONT_FAMILY'))
-			.setDesc(t('FONT_FAMILY_DESC'))
+			.setName("Font family")
+			.setDesc("Set the font family of the code editor.")
 			.addTextArea(text => text
 				.setValue(this.plugin.settings.fontFamily)
 				.onChange(async (value) => {
@@ -68,8 +66,8 @@ export class CodeFilesSettingsTab extends PluginSettingTab {
 				})).setClass("setting_ext");
 
 		new Setting(containerEl)
-			.setName(t('FONT_LIGATURES'))
-			.setDesc(t('FONT_LIGATURES_DESC'))
+			.setName("Font ligatures")
+			.setDesc("Editor will show font ligatures.")
 			.addToggle(toggle => toggle
 				.setValue(this.plugin.settings.fontLigatures)
 				.onChange(async (value) => {
@@ -78,8 +76,10 @@ export class CodeFilesSettingsTab extends PluginSettingTab {
 				}));
 
 		new Setting(containerEl)
-			.setName(t('FILE_EXTENSIONS'))
-			.setDesc(t('FILE_EXTENSIONS_DESC'))
+			.setName("File extensions")
+			.setDesc(
+				"Files with these extensions will show up in the sidebar, and will be available to create new files from. Seperated by commas. Changes to the file extensions need a restart to take effect.",
+			)
 			.addTextArea(text => text
 				.setValue(this.plugin.settings.extensions.join(","))
 				.onChange(async (value) => {
@@ -89,8 +89,8 @@ export class CodeFilesSettingsTab extends PluginSettingTab {
 
 
 		new Setting(containerEl)
-			.setName(t('WORDWRAP'))
-			.setDesc(t('WORDWRAP_DESC'))
+			.setName("Word wrap")
+			.setDesc("Editor will wrap long lines.")
 			.addToggle(toggle => toggle
 				.setValue(this.plugin.settings.wordWrap)
 				.onChange(async (value) => {
@@ -99,8 +99,8 @@ export class CodeFilesSettingsTab extends PluginSettingTab {
 				}));
 
 		new Setting(containerEl)
-			.setName(t('MINIMAP'))
-			.setDesc(t('MINIMAP_DESC'))
+			.setName("Minimap")
+			.setDesc("Editor will show a minimap.")
 			.addToggle(toggle => toggle
 				.setValue(this.plugin.settings.minimap)
 				.onChange(async (value) => {
@@ -109,8 +109,8 @@ export class CodeFilesSettingsTab extends PluginSettingTab {
 				}));
 
 		new Setting(containerEl)
-			.setName(t('LINE_NUMBERS'))
-			.setDesc(t('LINE_NUMBERS_DESC'))
+			.setName("Line numbers")
+			.setDesc("Show line numbers in the code editor.")
 			.addToggle(toggle => toggle
 				.setValue(this.plugin.settings.lineNumbers)
 				.onChange(async (value) => {
@@ -120,8 +120,8 @@ export class CodeFilesSettingsTab extends PluginSettingTab {
 
 
 		new Setting(containerEl)
-			.setName(t('FOLDING'))
-			.setDesc(t('FOLDING_DESC'))
+			.setName("Code block folding")
+			.setDesc("Editor will support code block folding.")
 			.addToggle(toggle => toggle
 				.setValue(this.plugin.settings.folding)
 				.onChange(async (value) => {
@@ -130,8 +130,10 @@ export class CodeFilesSettingsTab extends PluginSettingTab {
 				}));
 
 		new Setting(containerEl)
-			.setName(t('VIM_MODE'))
-			.setDesc(t('VIM_MODE_DESC'))
+			.setName("Vim mode")
+			.setDesc(
+				"Use Vim keybindings in the Monaco editor (normal/insert/visual). A small status line shows the current mode. Reopen editors for the change to apply.",
+			)
 			.addToggle(toggle => toggle
 				.setValue(this.plugin.settings.vimMode)
 				.onChange(async (value) => {

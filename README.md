@@ -1,8 +1,8 @@
-<h1 align="center">Obsidian VSCode Editor</h1>
+<h1 align="center">Obsidian Code Editor</h1>
 
 <p align="center">
-    <img alt="Release version" src="https://img.shields.io/github/v/release/sunxvming/obsidian-vscode-editor?style=for-the-badge">
-    <img alt="Download count" src="https://img.shields.io/github/downloads/sunxvming/obsidian-vscode-editor/total?style=for-the-badge">
+    <img alt="Release version" src="https://img.shields.io/github/v/release/sunxvming/obsidian-code-editor?style=for-the-badge">
+    <img alt="Download count" src="https://img.shields.io/github/downloads/sunxvming/obsidian-code-editor/total?style=for-the-badge">
 </p>
 
 <p align="center">
@@ -17,16 +17,16 @@
 
 ## About the plugins
 
-Obsidian by default does not support the viewing and editing of various code files, and Obsidian VSCode Editor was created to solve this problem. 
+Obsidian by default does not support the viewing and editing of various code files, and Obsidian Code Editor was created to solve this problem. 
 
-It is based on [Monaco Editor](https://microsoft.github.io/monaco-editor/) (VSCode Editor kernel) development, support for viewing and editing of various code format files, including but not limited to: ` C `, `C++`, `C#` , ` CSS `, ` Go `, ` HTML`, `Java`, `JavaScript`, `JSON`, `Python`, `Ruby`, `Rust`, `Shell`, `XML`, `YAML`, `ini`, etc.
+It is based on [Monaco Editor](https://microsoft.github.io/monaco-editor/) (the same editor component used in Visual Studio Code), with support for viewing and editing many code formats, including but not limited to: ` C `, `C++`, `C#` , ` CSS `, ` Go `, ` HTML`, `Java`, `JavaScript`, `JSON`, `Python`, `Ruby`, `Rust`, `Shell`, `XML`, `YAML`, `ini`, etc.
 
 You no longer have to open another editor just to view or edit a certain code file, everything is done in Obsidian.
 
 
 ## Basic features
 - It **does not depend on** any third-party network services and can be used even when not connected to the internet.
-- Support for viewing and editing files in various code formats, just like editing code with VSCode.
+- Support for viewing and editing files in various code formats, similar to a desktop code editor.
 - Supports customization of the editor's theme colors, including light and dark themes.
 - Allows customization of the editor's font family, font ligature support, font size, and provides a shortcut to adjust the font size using `Ctrl + mouse wheel`.
 - Supports editing individual code blocks from any Markdown document (uses Obsidian Monospace font).
@@ -39,12 +39,12 @@ You no longer have to open another editor just to view or edit a certain code fi
 
 ## How to support different code file
 The default support code file's extensions is `ts, js, py, css, c, cpp, go, rs, java, lua, php`. you can configure for which file extensions to support in the plugin's setting panel.
-![image.png](https://github.com/sunxvming/obsidian-vscode-editor/blob/main/img/20231103094237.png)
+![image.png](https://github.com/sunxvming/obsidian-code-editor/blob/main/img/20231103094237.png)
 
 
 
 ## Supported Shortcuts
-Most of the shortcuts are consistent with VS Code. Here are some of the supported shortcuts:
+Most of the shortcuts match Visual Studio Code. Here are some of the supported shortcuts:
 
 | Category     | Shortcut               | Action                    |
 | ------------ | ---------------------- | ------------------------- |
@@ -80,31 +80,31 @@ Most of the shortcuts are consistent with VS Code. Here are some of the supporte
 ## Use screenshot
 
 - **Light color theme**
-![image.png](https://github.com/sunxvming/obsidian-vscode-editor/blob/main/img/20230921184929.png)
+![image.png](https://github.com/sunxvming/obsidian-code-editor/blob/main/img/20230921184929.png)
 
 - **Dark color theme**
-![image.png](https://github.com/sunxvming/obsidian-vscode-editor/blob/main/img/20230921184840.png)
+![image.png](https://github.com/sunxvming/obsidian-code-editor/blob/main/img/20230921184840.png)
 
 
 - **Create code file**
-![image.png](https://github.com/sunxvming/obsidian-vscode-editor/blob/main/img/20230921185107.png)
+![image.png](https://github.com/sunxvming/obsidian-code-editor/blob/main/img/20230921185107.png)
 
 
 ## Supported Code Block Editing
  This plugin also supports editing individual code blocks from any Markdown document in the editor.
- You can just right click on any code block and click on "**Edit Code Block in VSCode Editor Plugin**".
+ You can just right click on any code block and click on "**Edit code block in Code Editor**".
  
  This will open a new modal with a Monaco Editor instance in which you can edit the code block, which will automatically sync back to the block in your document when you close the modal.
  
-![GIF 2023-11-3 10-25-01.gif](https://github.com/sunxvming/obsidian-vscode-editor/blob/main/img/GIF%202023-11-3%2010-25-01.gif)
+![GIF 2023-11-3 10-25-01.gif](https://github.com/sunxvming/obsidian-code-editor/blob/main/img/GIF%202023-11-3%2010-25-01.gif)
 
 
 ## Supported Internal links quick preview
 You can add a internal link to a code file in obsidian, and hovering the cursor over the link for **quick preview**.
-![GIF 2023-11-2 19-48-55.gif](https://github.com/sunxvming/obsidian-vscode-editor/blob/main/img/GIF%202023-11-2%2019-48-55.gif)
+![GIF 2023-11-2 19-48-55.gif](https://github.com/sunxvming/obsidian-code-editor/blob/main/img/GIF%202023-11-2%2019-48-55.gif)
 
 Code file will not appear  in file prompt list when intert Internal links. You need open `Detect all file extensions` setting.
-![image.png](https://github.com/sunxvming/obsidian-vscode-editor/blob/main/img/20231103095138.png)
+![image.png](https://github.com/sunxvming/obsidian-code-editor/blob/main/img/20231103095138.png)
 
 ## Installation
 
@@ -112,17 +112,17 @@ Code file will not appear  in file prompt list when intert Internal links. You n
 1. Open Settings > community plugins
 2. Turn off 'Safe mode'
 3. Click 'Browse' button to browse plugins
-4. Search for 'VSCode Editor'
+4. Search for 'Code Editor'
 5. Click 'Install' button
 6. Once installed, close the plugins browse window and go back community plugins window, and activate the newly installed plugin below installed plugins list
 
 **Manual installation**:
-1. Enter the latest version of making download page [latest release](https://github.com/sunxvming/obsidian-vscode-editor/releases/latest)
-2. Download the `obsidian-vscode-editor-x.y.z.zip` file, where `x.y.z` is the version number
-3. Extract obsidian-image-toolkit folder from the zip to your vault's plugins folder `<vault>/.obsidian/plugins/` (Note: `.obsidian` folder may be hidden, you need to show it firstly)
+1. Enter the latest version of making download page [latest release](https://github.com/sunxvming/obsidian-code-editor/releases/latest)
+2. Download the `obsidian-code-editor-x.y.z.zip` file, where `x.y.z` is the version number
+3. Extract the `obsidian-code-editor` folder from the zip to your vault's plugins folder `<vault>/.obsidian/plugins/` (Note: `.obsidian` folder may be hidden, you need to show it firstly)
 4. Open Settings > community plugins, and reload and activate the plugin below installed plugins list
 
 
 ## Contact
 
-If you've got any kind of feedback or questions, feel free to reach out via [GitHub issues](https://github.com/sunxvming/obsidian-vscode-editor/issues).
+If you've got any kind of feedback or questions, feel free to reach out via [GitHub issues](https://github.com/sunxvming/obsidian-code-editor/issues).

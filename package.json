@@ -1,7 +1,7 @@
 {
-	"name": "obsidian-vscode-editor",
+	"name": "obsidian-code-editor",
 	"version": "1.0.5",
-	"description": "Edit Code Files like VSCode.",
+	"description": "Rich code editing in Obsidian using Monaco Editor.",
 	"main": "src/main.js",
 	"scripts": {
 		"dev": "node esbuild.config.mjs",
